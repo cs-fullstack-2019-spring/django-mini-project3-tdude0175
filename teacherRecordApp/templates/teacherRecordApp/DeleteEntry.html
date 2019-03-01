@@ -1,0 +1,20 @@
+{% extends 'teacherRecordApp/index.html' %}
+
+
+{% block title %}
+Detail update
+{% endblock title %}
+
+{% block header %}
+Detail Update
+<br>
+<a href="{% url 'index' %}">Return</a>
+{% endblock header %}
+
+{% block content %}
+<form method="post">
+    <h3>Are You Sure?</h3>
+    {% csrf_token %}
+    <button>Submit</button>
+</form>
+{% endblock content %}

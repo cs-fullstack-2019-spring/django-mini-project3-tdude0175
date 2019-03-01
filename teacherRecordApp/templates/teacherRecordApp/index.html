@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Home
+        {% endblock title %}
+    </title>
+</head>
+<body>
+<h1>
+    {% block header %}
+    List Of Teachers
+    {% endblock header %}
+</h1>
+
+{% block content %}
+<table border="1">
+    <tr>
+        <th>Teacher</th>
+        <th>School</th>
+        <th>Hours</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+{% for classRecord in classList %}
+    <tr>
+<td>
+    <a href="{% url 'teacherDetails' classRecord.teacherName %}">
+        {{classRecord.teacherName}}
+    </a>
+</td>
+<td>
+    <a href="{% url 'schoolDetails' classRecord.school %}">
+        {{classRecord.school}}
+    </a>
+</td>
+        <td>{{classRecord.hours}}</td>
+        <td><a href="{% url 'updateDetails' classRecord.id %}">Update</a></td>
+        <td><a href="{% url 'deleteEntry' classRecord.id %}">Delete</a></td>
+    </tr>
+{% endfor %}
+</table>
+
+<h3><a href="{% url 'newEntry' %}">New entry</a></h3>
+{% endblock content %}
+
+</body>
+</html>

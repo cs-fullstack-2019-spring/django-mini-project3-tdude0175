@@ -1,0 +1,32 @@
+{% extends 'teacherRecordApp/index.html' %}
+
+{% block title %}
+    Details
+{% endblock title %}
+
+{% block header %}
+    Teacher Details list
+<br>
+<a href="{% url 'index' %}">Return</a>
+{% endblock header %}
+
+{% block content %}
+<table border="1">
+    <tr>
+        <th>Teacher</th>
+        <th>School</th>
+        <th>Hours</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+{% for eachEntry in teacher %}
+<tr>
+    <td>Teacher: {{eachEntry.teacherName}}</td>
+    <td>School: {{eachEntry.school}}</td>
+    <td>Hours:{{eachEntry.hours}}</td>
+    <td><a href="{% url 'updateDetails' classRecord.id %}">Update</a></td>
+    <td><a href="{% url 'deleteEntry' classRecord.id %}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock content %}
